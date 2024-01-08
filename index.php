@@ -45,34 +45,41 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Basic PHP Calculator</title>
 </head>
 <body>
 
-    <h1>Basic PHP Calculator</h1>
+    <div class="calculator">
+        <h1>Basic PHP Calculator</h1>
 
-    <form action="" method="POST">
+        <form action="" method="POST">
         
-        <?php echo $error ?> <br>
-
-        <?php echo $result ?> <br>
-
-        <label for="fn_id">First Number:</label>
-        <input type="text" name="fn" id="fn_id" required> <br>
-
-        <label for="sn_id">Second Number:</label>
-        <input type="text" name="sn" id="sn_id" required> <br>
-
-        <select name="operator" id="">
-            <option value="+">+</option>
-            <option value="-">-</option>
-            <option value="*">*</option>
-            <option value="/">/</option>
-        </select> <br>
-
-        <button type="submit">Calculate</button>
-
-    </form>
+            <p class="error"><?php echo $error ?></p>
+        
+            <p class="result"><?php echo $result ?></p>
+            
+            <div class="input-element">
+                <label for="fn_id">First Number:</label>
+                <input type="text" name="fn" id="fn_id" required>
+            </div>
     
+            <div class="input-element">
+                <label for="sn_id">Second Number:</label>
+                <input type="text" name="sn" id="sn_id" required>
+            </div>
+
+            <select name="operator" id="">
+                <option value="+">+</option>
+                <option value="-">-</option>
+                <option value="*">*</option>
+                <option value="/">/</option>
+            </select>
+
+            <button type="submit">Calculate</button>
+
+        </form>
+    </div>
+
 </body>
 </html>
