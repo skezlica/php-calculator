@@ -4,24 +4,24 @@ $result = '';
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $first_number = $_POST['fn'];
-    $seccond_number = $_POST['sn'];
+    $second_number = $_POST['sn'];
     $operator = $_POST['operator'];
     
     switch($operator) {
         case '+':
-            $result = $first_number + $seccond_number;
+            $result = $first_number + $second_number;
             break;
 
         case '-':
-            $result = $first_number - $seccond_number;
+            $result = $first_number - $second_number;
             break;
 
         case '*':
-            $result = $first_number * $seccond_number;
+            $result = $first_number * $second_number;
             break;
 
         case '/':
-            $result = $first_number / $seccond_number;
+            $result = $first_number / $second_number;
             break;
         
         default:
@@ -49,7 +49,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         <label for="fn_id">First Number:</label>
         <input type="number" name="fn" id="fn_id" required> <br>
 
-        <label for="sn_id">Seccond Number:</label>
+        <label for="sn_id">Second Number:</label>
         <input type="number" name="sn" id="sn_id" required> <br>
 
         <select name="operator" id="">
