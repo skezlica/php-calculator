@@ -1,5 +1,6 @@
 <?php
 
+$error = '';
 $result = '';
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -7,25 +8,33 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $second_number = $_POST['sn'];
     $operator = $_POST['operator'];
     
-    switch($operator) {
-        case '+':
-            $result = $first_number + $second_number;
-            break;
-
-        case '-':
-            $result = $first_number - $second_number;
-            break;
-
-        case '*':
-            $result = $first_number * $second_number;
-            break;
-
-        case '/':
-            $result = $first_number / $second_number;
-            break;
-        
-        default:
-            $result = "No operator found";
+    if(!is_numeric($first_number) || !is_numeric($second_number)) {
+        $error = 'Please enter the numbers.';
+    } else {
+        switch($operator) {
+            case '+':
+                $result = $first_number + $second_number;
+                break;
+    
+            case '-':
+                $result = $first_number - $second_number;
+                break;
+    
+            case '*':
+                $result = $first_number * $second_number;
+                break;
+    
+            case '/':
+                if ($second_number != 0) {
+                    $result = $first_number / $second_number;
+                } else {
+                    $error = 'Cannot divide by zero.';
+                }
+                break;
+            
+            default:
+                $result = "No operator found.";
+        }
     }
 }
 
@@ -43,14 +52,16 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     <h1>Basic PHP Calculator</h1>
 
     <form action="" method="POST">
+        
+        <?php echo $error ?> <br>
 
         <?php echo $result ?> <br>
 
         <label for="fn_id">First Number:</label>
-        <input type="number" name="fn" id="fn_id" required> <br>
+        <input type="text" name="fn" id="fn_id" required> <br>
 
         <label for="sn_id">Second Number:</label>
-        <input type="number" name="sn" id="sn_id" required> <br>
+        <input type="text" name="sn" id="sn_id" required> <br>
 
         <select name="operator" id="">
             <option value="+">+</option>
