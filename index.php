@@ -1,7 +1,10 @@
 <?php
 
+require_once 'config.php';
+
 $error = '';
 $result = '';
+$history_result = '';
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $first_number = $_POST['fn'];
@@ -39,6 +42,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
             default:
                 $result = "No operator found.";
         }
+
+        $history_result = $first_number . " " . $operator . " " . $second_number . " = " . $result; 
+        
+        $sql = "INSERT INTO history (history_result) VALUES (?)";
+        $run = $conn->prepare($sql);
+        $run->bind_param("s", $history_result);
+        $run->execute();
     }
 }
 
