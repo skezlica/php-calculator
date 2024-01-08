@@ -31,6 +31,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $error = 'Cannot divide by zero.';
                 }
                 break;
+
+            case '^':
+                $result = pow($first_number, $second_number);
+                break;
             
             default:
                 $result = "No operator found.";
@@ -74,6 +78,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <option value="-">-</option>
                 <option value="*">*</option>
                 <option value="/">/</option>
+                <option value="^">^</option>
             </select>
 
             <button type="submit">Calculate</button>
