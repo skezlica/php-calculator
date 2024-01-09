@@ -2,7 +2,7 @@
 
 # PHP version: 8.2.12
 
-You need to configure your database:
+You need to configure your database, or you can just run "db_config.php":
 
 --------------------------------------------------
 1. Creating a database "calculator"
